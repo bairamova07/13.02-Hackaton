@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="kk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тіркелу - Recipe App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #218838;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Тіркелу</h2>
+      <form id="registerForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <p class="error" id="emailError"></p>
+        <input type="password" id="password" placeholder="Құпия сөз" required />
+        <p class="error" id="passwordError"></p>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Құпия сөзді қайталаңыз"
+          required
+        />
+        <p class="error" id="confirmPasswordError"></p>
+        <button type="submit">Тіркелу</button>
+      </form>
+      <p id="successMessage" style="color: green"></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let email = document.getElementById("email").value;
+          let password = document.getElementById("password").value;
+          let confirmPassword =
+            document.getElementById("confirmPassword").value;
+          let emailError = document.getElementById("emailError");
+          let passwordError = document.getElementById("passwordError");
+          let confirmPasswordError = document.getElementById(
+            "confirmPasswordError"
+          );
+          let successMessage = document.getElementById("successMessage");
+
+          emailError.textContent = "";
+          passwordError.textContent = "";
+          confirmPasswordError.textContent = "";
+          successMessage.textContent = "";
+
+          let valid = true;
+
+          if (!email.includes("@")) {
+            emailError.textContent = "Дұрыс email енгізіңіз.";
+            valid = false;
+          }
+
+          if (password.length < 8) {
+            passwordError.textContent =
+              "Құпия сөз кемінде 8 таңбадан тұруы керек.";
+            valid = false;
+          }
+
+          if (password !== confirmPassword) {
+            confirmPasswordError.textContent = "Құпия сөздер сәйкес келмейді.";
+            valid = false;
+          }
+
+          if (valid) {
+            localStorage.setItem("userEmail", email);
+            sessionStorage.setItem(
+              "userSession",
+              JSON.stringify({ email: email })
+            );
+            successMessage.textContent = "Сіз сәтті тіркелдіңіз!";
+          }
+        });
+
+      window.addEventListener("load", function () {
+        let savedEmail = localStorage.getItem("userEmail");
+        if (savedEmail) {
+          document.getElementById("email").value = savedEmail;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -126,6 +126,12 @@ button {
 
 button:hover {
   background: #388e3c;
+  color: white;
+  animation-iteration-count: infinite;
+  transition-property: initial;
+  transition-duration: 1s;
+  font-size: 20px;
+  padding: 10px;
 }
 
 .cart ul {
@@ -192,14 +198,18 @@ aside {
   gap: 20px;
 }
 
-button:hover {
-  background: black;
+.lest a:hover {
   color: white;
   animation-iteration-count: infinite;
   transition-property: initial;
   transition-duration: 1s;
   font-size: 20px;
   padding: 10px;
+  margin-left: 70vh;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+  background: #388e3c;
 }
 .lest {
   margin-right: 20px;
