@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    background="https://i.astanatv.kz/2024/6/18/1718712782545.jpg?w=1200&h=600&format=jpg&resize=aspectfill&g=center"
+    style="
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0;
+      object-fit: cover;
+    "
+  >
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img
+            class="images"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxenbfI3_FFpgyf5qOI_zmnSzbhnjfT4Apgg&s"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="main">
+        <a href="">Көкеністер</a>
+        <a href="">Жеміс-жидектер</a>
+      </div>
+    </header>
+
+    <main>
+      <h2>🛒 Азық-түлік сатып алу</h2>
+      <div class="container">
+        <aside>
+          <a class="asidetext" href="fruct.html"
+            >Жеміс жидектер мен көкеністер</a
+          >
+          <a class="asidetext" href="break.html">Нан өнімдері</a>
+          <a class="asidetext" href="meat.html">Ет өнімдері</a>
+          <a class="asidetext" href="milk.html">Сүт өнімдері</a>
+          <a class="asidetext" href="water.html">Су және соктар</a>
+          <a class="asidetext" href="hygienics.html"
+            >Жеке гигиена және сұлулық</a
+          >
+          <a class="asidetext" href="detergent.html">Жуу және тазалау</a>
+          <a class="asidetext" href="petproduct.html"
+            >Үй жануарларына арналған өнімдер</a
+          >
+        </aside>
+       
+
+            <div class="container1">
+              <div class="menu">
+                <h3>Гигиена</h3>
+                <div class="food-item">
+                  <span>🧼 Сабын</span>
+                  <span> 600₸</span>
+                  <button onclick="addToCart('Сабын', 600)">
+                    Себетке қосу
+                  </button>
+                </div>
+                <div class="food-item">
+                  <span>Шампунь</span>
+                  <span>2100₸</span>
+                  <button onclick="addToCart('Шампунь', 2100)">Себетке қосу</button>
+                </div>
+                <div class="food-item">
+                  <span>Влажный салфетка</span>
+                  <span>250₸</span>
+                  <button onclick="addToCart('Влажный салфетка', 250)">Себетке қосу</button>
+                </div>
+                <div class="food-item">
+                  <span>Порошок</span>
+                  <span>700₸</span>
+                  <button onclick="addToCart('Порошок', 700)">Себетке қосу</button>
+                </div>
+                <div class="food-item">
+                  <span>Щетка</span>
+                  <span>687₸</span>
+                  <button onclick="addToCart('Щетка', 687)">Себетке қосу</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart">
+            <h3>🛒 Себет</h3>
+            <ul id="cart-list"></ul>
+            <p class="total">Жалпы: <span id="total-price">0</span>₸</p>
+            <button onclick="clearCart()" style="background: red">
+              Себетті тазалау
+            </button>
+          </div>
+        </main>
+      </div>
+    </main>
+    <script>
+      let cart = [];
+      let totalPrice = 0;
+
+      function addToCart(name, price) {
+        cart.push({ name, price });
+        totalPrice += price;
+        updateCart();
+      }
+
+      function updateCart() {
+        const cartList = document.getElementById("cart-list");
+        const totalElement = document.getElementById("total-price");
+        cartList.innerHTML = "";
+        cart.forEach((item, index) => {
+          let li = document.createElement("li");
+          li.classList.add("cart-item");
+          li.innerHTML = ` ${item.name} - ${item.price}₸ <button onclick="removeFromCart(${index})" style="background: red;">X</button>`;
+          cartList.appendChild(li);
+        });
+        totalElement.textContent = totalPrice;
+      }
+
+      function removeFromCart(index) {
+        totalPrice -= cart[index].price;
+        cart.splice(index, 1);
+        updateCart();
+      }
+
+      function clearCart() {
+        cart = [];
+        totalPrice = 0;
+        updateCart();
+      }
+    </script>
+  </body>
+</html>

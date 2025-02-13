@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="kk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Азық-түлік сатып алу</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    background="https://i.astanatv.kz/2024/6/18/1718712782545.jpg?w=1200&h=600&format=jpg&resize=aspectfill&g=center"
+    style="
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0;
+      object-fit: cover;
+    "
+  >
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img
+            class="images"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxenbfI3_FFpgyf5qOI_zmnSzbhnjfT4Apgg&s"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="lest">
+        <input type="search" name="search" id="search" placeholder="Поиск" />
+        <button>Sign in</button>
+        <button>Sign up</button>
+      </div>
+    </header>
+    <h2>🛒 Азық-түлік сатып алу</h2>
+    <div class="container">
+      <aside>
+        <a class="asidetext" href="fruct.html">Жеміс жидектер мен көкеністер</a>
+        <a class="asidetext" href="break.html">Нан өнімдері</a>
+        <a class="asidetext" href="meat.html">Ет өнімдері</a>
+        <a class="asidetext" href="milk.html">Сүт өнімдері</a>
+        <a class="asidetext" href="water.html">Су және соктар</a>
+        <a class="asidetext" href="hygienics.html">Жеке гигиена және сұлулық</a>
+        <a class="asidetext" href="detergent.html">Жуу және тазалау</a>
+        <a class="asidetext" href="petproduct.html"
+          >Үй жануарларына арналған өнімдер</a
+        >
+      </aside>
+
+      <div class="container1">
+        <div class="menu">
+          <h3>🛍 Нан Өгнімдері</h3>
+          <div class="food-item">
+            <span>🍞Багет</span>
+            <span>788₸</span>
+            <button onclick="addToCart('Багет', 788)">Себетке қосу</button>
+          </div>
+          <div class="food-item">
+            <span>🍞Батон</span>
+            <span>200₸</span>
+            <button onclick="addToCart('Батон', 200)">Себетке қосу</button>
+          </div>
+          <div class="food-item">
+            <span>🍞Бородинский</span>
+            <span>430₸</span>
+            <button onclick="addToCart('Бородинский', 430)">
+              Себетке қосу
+            </button>
+          </div>
+          <div class="food-item">
+            <span>🍞Булочка</span>
+            <span>700₸</span>
+            <button onclick="addToCart('Булочка', 700)">Себетке қосу</button>
+          </div>
+          <div class="food-item">
+            <span>🍞Хлед для сендвичей</span>
+            <span>760₸</span>
+            <button onclick="addToCart('Хлеб для сендвичей', 760)">
+              Себетке қосу
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cart">
+      <h3>🛍 Себет</h3>
+      <ul id="cart-list"></ul>
+      <p class="total">Жалпы: <span id="total-price">0</span>₸</p>
+      <button onclick="clearCart()" style="background: red">
+        Себетті тазалау
+      </button>
+    </div>
+  </body>
+</html>
