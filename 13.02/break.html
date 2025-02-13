@@ -20,7 +20,7 @@
         <a href="index.html">
           <img
             class="images"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxenbfI3_FFpgyf5qOI_zmnSzbhnjfT4Apgg&s"
+            src="https://i.pinimg.com/originals/dd/7b/d8/dd7bd804bd1df5cf4f4628420c8898a4.jpg"
             alt=""
           />
         </a>
@@ -89,5 +89,57 @@
         Себетті тазалау
       </button>
     </div>
+    <footer>
+      <div class="foot1">
+        <p>Телефон доставки</p>
+        <p>Город Алматы</p>
+        <p>+7 705 656 6565</p>
+        <p>+7 777 546 3340</p>
+        <p class="email">@grocerystore.kz</p>
+      </div>
+      <div class="foot2">
+        <a class="textfooter" href="aboutus.html">О нас</a>
+        <a class="textfooter" href="dostavka.html">Доставка</a>
+        <a class="textfooter" href="vacancies.html">Вакансии</a>
+        <a class="textfooter" href="stock.html">Акции</a>
+        <a class="textfooter" href="faq.html">FAQ</a>
+        <a class="textfooter" href="advertiser.html">Рекламодателям</a>
+      </div>
+    </footer>
+    <script>
+      let cart = [];
+      let totalPrice = 0;
+
+      function addToCart(name, price) {
+        cart.push({ name, price });
+        totalPrice += price;
+        updateCart();
+      }
+
+      function updateCart() {
+        const cartList = document.getElementById("cart-list");
+        const totalElement = document.getElementById("total-price");
+        cartList.innerHTML = "";
+        cart.forEach((item, index) => {
+          let li = document.createElement("li");
+          li.classList.add("cart-item");
+          li.innerHTML = ` ${item.name} - ${item.price}₸ <button onclick="removeFromCart(${index})" style="background: red;">X</button>`;
+          cartList.appendChild(li);
+        });
+        totalElement.textContent = totalPrice;
+      }
+
+      function removeFromCart(index) {
+        totalPrice -= cart[index].price;
+        cart.splice(index, 1);
+        updateCart();
+      }
+
+      function clearCart() {
+        cart = [];
+        totalPrice = 0;
+        updateCart();
+      }
+    </script>
   </body>
 </html>
